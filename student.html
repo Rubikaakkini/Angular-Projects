@@ -1,0 +1,33 @@
+<div class="teacher-panel">
+  <h2>Teacher Mark Entry</h2>
+  
+  <table>
+    <thead>
+      <tr>
+        <th>Student Name</th>
+        <th>Input Marks</th>
+        <th>Result Status</th>
+        <th>Grade</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let s of students">
+        <td>{{ s.name }}</td>
+        <td>
+          <input type="number" [(ngModel)]="s.marks" placeholder="Enter score">
+        </td>
+        
+        <!-- Fixed Status Column -->
+        <td [class.pass]="calculateStatus(s.marks) === 'Pass'" 
+            [class.fail]="calculateStatus(s.marks) === 'Fail'">
+          {{ calculateStatus(s.marks) }}
+        </td>
+
+        <!-- Grade Column -->
+        <td class="grade-text">
+          {{ calculategrade(s.marks) }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
